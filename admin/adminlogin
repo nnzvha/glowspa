@@ -1,0 +1,156 @@
+<?php
+session_start();
+
+if (isset($_POST['login'])) {
+    $servername = "localhost";
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $dbusername = "root";
+    $dbpassword = "";
+    $dbname = "spa"; 
+
+    $conn = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
+    
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = "SELECT admin_id, username, email, password FROM admin WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    if (mysqli_num_rows($result) == 1 && password_verify($password, $row["password"])) {
+        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $row["aemail"];
+        $_SESSION['admin_id'] = $row["admin_id"]; 
+        header("Location: index.php");
+        exit();
+    } else {
+        $error_message = "Incorrect username and/or password. Please try again.";
+    }
+} else {
+    $error_message = "";
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            background-image: url("./image/bglogin.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: "Times New Roman", Times, serif;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .container img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f0f0f0;
+            color: black;
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: #ff5733;
+            background-color: #e0e0e0;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #357EC7;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .submit-btn:hover {
+            background-color: #c04f1b;
+        }
+
+        .link {
+            color: #357EC7;
+            font-size: 0.9em;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Admin Login </h1>
+
+    <?php
+    if (!empty($error_message)) {
+        echo '<p class="error-message">' . $error_message . '</p>';
+    }
+    ?>
+    <form method="POST">
+        Username: <input class="input" name="username" type="text" required>
+        Password: <input class="input" name="password" type="password" required>
+        <input class="submit-btn" type="submit" value="Submit" name="login">
+    </form>
+    <p>
+      <a class="link" href="./adminadd.php">Click here for the new user</a>
+    </p>
+  </div>
+
+</body>
+</html>
