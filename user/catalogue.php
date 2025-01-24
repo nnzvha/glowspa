@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "test";
+$dbname = "spa";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -276,52 +276,52 @@ $conn->close();
     <h1>Our Services and Packages</h1>
     <p>GlowSpa</p>
 </div>
-
-<section class="catalogue" id="services">
-    <h2>Our Services</h2>
-    <div class="row equal-height">
-       
+		<section class="catalogue" id="services">
+			<h2>Our Services</h2>
+			<div class="row equal-height">
+				<!-- Full Body Massage -->
 				<div class="col-md-4 service">
-					<h3 style="font-weight: bold">Relaxation Package</h3>
-					<h4>(RM160)</h4><br>
-					<p>Unwind with a soothing Aromatherapy Massage, followed by a warm Herbal Foot Soak to relieve stress and tension.</p>
-					
-					<ul class="service-list">
-						<h4>Services included:</h4>
-						<li>Aromatherapy Massage</li>
-						<li>Herbal Foot Soak</li>
-						<li>Lavender Honey Panna Cotta</li>
-					</ul>
-				</div>
-
-				
-				<div class="col-md-4 service">
-					<h3 style="font-weight: bold">Luxury Indulgence Package</h3>
-					<h4>(RM210)</h4><br>
-					<p>Experience the ultimate pampering with a Gold Facial Treatment for radiant, youthful skin, a Balinese Massage to ease tension.</p>
-					
-					<ul class="service-list">
-						<h4>Services included:</h4>
-						<li>Gold Facial Treatment</li>
-						<li>Balinese Massage</li>
-						<li>Dark Chocolate Truffle with Gold Dust</li>
-					</ul>
-				</div>
-
-				<div class="col-md-4 service">
-					<h3 style="font-weight: bold">Glow Essentials Package</h3>
+					<h3 style="font-weight: bold">Full Body Massage Therapy</h3>
 					<h4>(RM150)</h4><br>
-					<p>Enjoy a combination of our best treatments at discounted rates.</p>
-					
-					<ul class="service-list">
-						<h4>Services included:</h4>
-						<li>Hydrating Facial</li>
-						<li>Hydrating Body Wrap</li>
-						<li>Berry & Greek Yogurt Parfait</li>
-					</ul>
+					<p>Relax and rejuvenate with our signature massage treatments.</p>
+					<div class="service-list">
+						<ul>
+							<li>Swedish Massage: Light to medium pressure for relaxation</li>
+							<li>Deep Tissue Massage: Focuses on muscle tension relief</li>
+							<li>Aromatherapy Massage: Essential oils for stress relief</li>
+						</ul><br><br>
+					</div>
 				</div>
-    </div>
-</section>
+
+				<!-- Facial Treatment -->
+				<div class="col-md-4 service">
+					<h3 style="font-weight: bold">Facial Treatment</h3>
+					<h4>(RM80)</h4><br>
+					<p>Pamper your skin with our premium facial treatments.</p><br>
+					<div class="service-list">
+						<ul>
+							<li>Hydrating Facial: Restores moisture for glowing skin</li>
+							<li>Anti-Aging Facial: Reduces fine lines & firms skin</li>
+							<li>Acne Treatment Facial: Deep cleanse & soothe irritated skin</li>
+							<li>Brightening Facial: Evens out skin tone for a fresh glow</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Head, Neck & Shoulder Massage -->
+				<div class="col-md-4 service">
+					<h3 style="font-weight: bold">Head, Neck & Shoulder Massage</h3>
+					<h4>(RM120)</h4>
+					<p>Enjoy a combination of our best treatments at discounted rates.</p>
+					<div class="service-list">
+						<ul>
+							<li>Targets tension in the upper body, relieving stiffness caused by stress and poor posture</li>
+							<li>Relieves tension headaches and stimulates blood circulation in the scalp for relaxation.</li>
+						</ul><br><br><br><br>
+					</div>
+				</div>
+			</div>
+		</section>
 
 <section class="catalogue" id="services">
     <h2>Our Packages</h2>
